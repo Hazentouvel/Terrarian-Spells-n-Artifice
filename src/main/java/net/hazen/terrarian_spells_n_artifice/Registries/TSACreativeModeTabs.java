@@ -1,0 +1,969 @@
+package net.hazen.terrarian_spells_n_artifice.Registries;
+
+import net.hazen.hazennstuff.HazenNStuff;
+import net.hazen.hazennstuff.Item.Block.HnSBlocks;
+import net.hazen.hazentouvelib.Registries.HLItemRegistry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
+public class TSACreativeModeTabs {
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, HazenNStuff.MOD_ID);
+
+    public static final Supplier<CreativeModeTab> HAZEN_N_STUFF_MOBS = CREATIVE_MODE_TAB.register("hazennstuff_mobs",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(HnSItemRegistry.VOID_WANDERER_EGG.get()))
+                    .title(Component.translatable("creativetab.hazennstuff.hazennstuff_mobs"))
+                    .displayItems((itemDisplayParameters, output) -> {
+
+                        output.accept(HnSItemRegistry.VOID_WANDERER_EGG.get());
+                        output.accept(HnSItemRegistry.SERVANT_OF_ENDER_EGG.get());
+                        output.accept(HnSItemRegistry.THE_RECLUSE_EGG.get());
+
+                    })
+                    .build());
+
+    public static final Supplier<CreativeModeTab> HAZEN_N_STUFF_MATERIALS = CREATIVE_MODE_TAB.register("hazennstuff_materials",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(HnSItemRegistry.COSMIC_GOLD_INGOT.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(HazenNStuff.MOD_ID, "hazennstuff_blocks"))
+                    .title(Component.translatable("creativetab.hazennstuff.hazennstuff_materials"))
+                    .displayItems((itemDisplayParameters, output) -> {
+
+                        //Raw Materials
+                        output.accept(HnSItemRegistry.RAW_ZENALITE);
+                        output.accept(HnSItemRegistry.STARKISSED_ZENALITE);
+                        output.accept(HnSItemRegistry.DREADSTONE);
+                        output.accept(HnSItemRegistry.CRUDE_METAL);
+                        output.accept(HnSItemRegistry.CHLOROPHYTE_CHUNK);
+                        output.accept(HnSItemRegistry.SHADESTONE);
+
+                        //Ingots/Crystals/Gems
+                        output.accept(HnSItemRegistry.ROSE_QUARTZ);
+                        output.accept(HnSItemRegistry.ROSE_GOLD_INGOT);
+                        output.accept(HnSItemRegistry.ZENALITE_INGOT);
+                        output.accept(HnSItemRegistry.DREADSTEEL_INGOT);
+                        output.accept(HnSItemRegistry.STEEL_INGOT);
+                        output.accept(HnSItemRegistry.SOLAR_CORE);
+                        output.accept(HnSItemRegistry.SILVER_SCRAPS);
+                        output.accept(HnSItemRegistry.CHLOROPHYTE_INGOT);
+                        output.accept(HnSItemRegistry.HALLOWED_INGOT);
+                        output.accept(HnSItemRegistry.DEMONITE_INGOT);
+                        output.accept(HnSItemRegistry.COSMIC_GOLD_INGOT);
+
+                        //Nuggets
+                        output.accept(HnSItemRegistry.PYRIUM_NUGGET);
+                        output.accept(HnSItemRegistry.STEEL_NUGGET);
+
+                        //Templates/Molds
+                        output.accept(HnSItemRegistry.DIVINE_MOLD);
+                        output.accept(HnSItemRegistry.FLAMING_TEMPLATE);
+
+                        //Fragments
+                        output.accept(HnSItemRegistry.RUNESTONE_FRAGMENTS);
+                        output.accept(HnSItemRegistry.PERMAFROST_FRAGMENT);
+                        output.accept(HnSItemRegistry.EXCALIBUR_FRAGMENT);
+
+                        //Bones
+                        output.accept(HnSItemRegistry.OVERGROWN_BONE);
+                        output.accept(HnSItemRegistry.CHARRED_BONES);
+
+                        //Focus Materials
+                        output.accept(HnSItemRegistry.GLOWING_MUSHROOM);
+                        output.accept(HnSItemRegistry.SHADOW_SCALE);
+                        output.accept(HnSItemRegistry.NIGHTMARE_FUEL);
+
+                        //Misc
+                        output.accept(HnSBlocks.FIREBLOSSOM);
+
+                        //Misc
+                        output.accept(HnSItemRegistry.TYROS_LOOT_BAG.get());
+
+                        output.accept(HnSItemRegistry.CLOTH_OF_THE_FLAMEBEARER);
+                        output.accept(HnSItemRegistry.STORM_WEAVE);
+                        output.accept(HnSItemRegistry.SPIDER_FANG);
+                        output.accept(HnSItemRegistry.PRISMATIC_SHARD);
+                        output.accept(HnSItemRegistry.VOLT_CORE);
+                        output.accept(HnSItemRegistry.STARDUST);
+                        output.accept(HnSItemRegistry.ELDER_GUARDIAN_SPINE);
+                        output.accept(HnSItemRegistry.ARCANE_SEA_SHELL);
+                        output.accept(HnSItemRegistry.DEUS_ESSENCE);
+                        output.accept(HnSItemRegistry.NETHER_STAR_FRAGMENT);
+                        output.accept(HnSItemRegistry.CATALYST);
+
+                        //Food
+                        output.accept(HnSItemRegistry.LEMON);
+                        output.accept(HnSItemRegistry.DIVINE_LEMON);
+                        output.accept(HnSItemRegistry.FRIED_ICE_SPIDER_EGG);
+
+                        /*
+                        *** Upgrade Orbs
+                         */
+                        output.accept(HLItemRegistry.RADIANCE_UPGRADE_ORB.get());
+                        output.accept(HLItemRegistry.SHADOW_UPGRADE_ORB.get());
+                        output.accept(HLItemRegistry.COSMIC_UPGRADE_ORB.get());
+                        output.accept(HnSItemRegistry.HYDRO_UPGRADE_ORB.get());
+                        output.accept(HnSItemRegistry.ARCHERY_UPGRADE_ORB.get());
+                        output.accept(HnSItemRegistry.MELEE_UPGRADE_ORB.get());
+                        output.accept(HnSItemRegistry.HEALTH_UPGRADE_ORB.get());
+                        output.accept(HnSItemRegistry.ELDRITCH_UPGRADE_ORB.get());
+
+                        // Tier 2 Upgrade Orbs
+                        //output.accept(HnSItemRegistry.ENHANCED_FIRE_UPGRADE_ORB.get());
+                        //output.accept(HnSItemRegistry.ENHANCED_ICE_UPGRADE_ORB.get());
+
+                        //Runes
+                        output.accept(HnSItemRegistry.MELEE_RUNE.get());
+                        output.accept(HnSItemRegistry.ARCHERY_RUNE.get());
+                        output.accept(HnSItemRegistry.HEALTH_RUNE.get());
+                        output.accept(HLItemRegistry.SHADOW_RUNE.get());
+                        output.accept(HLItemRegistry.RADIANCE_RUNE.get());
+                        output.accept(HLItemRegistry.COSMIC_RUNE.get());
+                        output.accept(HnSItemRegistry.HYDRO_RUNE.get());
+                        output.accept(HnSItemRegistry.ELDRITCH_RUNE.get());
+
+
+                        // Artifacts
+                        output.accept(HnSItemRegistry.ENCHANTED_ARTIFACT.get());
+                        output.accept(HnSItemRegistry.SMITHERS_ARTIFACT.get());
+                        output.accept(HnSItemRegistry.DIVINE_ARTIFACT.get());
+
+
+
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> HAZEN_N_STUFF_BLOCKS = CREATIVE_MODE_TAB.register("hazennstuff_blocks",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(HnSItemRegistry.HAZEL_STATUE.get()))
+                    .title(Component.translatable("creativetab.hazennstuff.hazennstuff_blocks"))
+                    .displayItems((itemDisplayParameters, output) -> {
+
+                        //Compact Blocks
+                        output.accept(HnSItemRegistry.ZENALITE_BLOCK.get());
+                        output.accept(HnSItemRegistry.PYRIUM_BLOCK.get());
+                        output.accept(HnSItemRegistry.MITHRIL_BLOCK.get());
+                        output.accept(HnSItemRegistry.ARCANE_STEEL_BLOCK.get());
+
+
+                        /*
+                        *** Sets
+                         */
+
+                        // Zenalite Brick
+                        output.accept(HnSItemRegistry.ZENALITE_BRICKS.get());
+                        output.accept(HnSItemRegistry.ZENALITE_BRICK_SLAB.get());
+                        output.accept(HnSItemRegistry.ZENALITE_BRICK_STAIRS.get());
+                        output.accept(HnSItemRegistry.ZENALITE_BRICK_WALL.get());
+
+                        // Mossy Mud Bricks
+                        output.accept(HnSItemRegistry.MOSSY_MUD_BRICKS.get());
+                        output.accept(HnSItemRegistry.MOSSY_MUD_BRICK_STAIRS.get());
+                        output.accept(HnSItemRegistry.MOSSY_MUD_BRICK_SLAB.get());
+                        output.accept(HnSItemRegistry.MOSSY_MUD_BRICK_WALL.get());
+
+                        //Wisewood Set
+                        output.accept(HnSItemRegistry.WISEWOOD_PLANKS.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_DOOR.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_TRAPDOOR.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_SLAB.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_FENCE.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_FENCE_GATE.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_STAIRS.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_LEAVES.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_LOG.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_WOOD.get());
+                        output.accept(HnSItemRegistry.STRIPPED_WISEWOOD_LOG.get());
+                        output.accept(HnSItemRegistry.STRIPPED_WISEWOOD_WOOD.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_BUTTON.get());
+                        output.accept(HnSItemRegistry.WISEWOOD_PRESSURE_PLATE.get());
+
+                        output.accept(HnSItemRegistry.WISEWOOD_SAPLING.get());
+
+                        //Wisewood Set
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_PLANKS.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_NAILED_PLANKS.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_STAIRS.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_SLAB.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_LOG.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_WOOD.get());
+                        output.accept(HnSItemRegistry.STRIPPED_FROSTBITE_BIRCH_LOG.get());
+                        output.accept(HnSItemRegistry.STRIPPED_FROSTBITE_BIRCH_WOOD.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_FENCE_GATE.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_FENCE.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_BUTTON.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_PRESSURE_PLATE.get());
+
+                        output.accept(HnSItemRegistry.FROSTBITE_BIRCH_SAPLING.get());
+
+
+                        /*
+                        *** Ores
+                         */
+
+                        // Zenalite
+                        output.accept(HnSItemRegistry.ZENALITE_DEEPSLATE_ORE.get());
+                        output.accept(HnSItemRegistry.ZENALITE_STONE_ORE.get());
+                        output.accept(HnSItemRegistry.ZENALITE_END_STONE_ORE.get());
+                        output.accept(HnSItemRegistry.ZENALITE_ABYSSLATE_ORE.get());
+                        output.accept(HnSItemRegistry.ZENALITE_VOIDSTONE_ORE.get());
+
+                        output.accept(HnSItemRegistry.SOLAR_CORE_BLACKSTONE_ORE.get());
+                        output.accept(HnSItemRegistry.SOLAR_CORE_NETHERACK_ORE.get());
+
+                        output.accept(HnSItemRegistry.DREADSTONE_ORE.get());
+
+                        output.accept(HnSItemRegistry.CHLOROPHYTE_ORE.get());
+
+
+
+                        /*
+                        *** Overworld Blocks
+                         */
+                        output.accept(HnSItemRegistry.RUNESTONE_SLAG.get());
+                        output.accept(HnSItemRegistry.AQUASTONE.get());
+
+                        /*
+                        *** Nether Blocks
+                         */
+
+                        /*
+                        ***End Blocks
+                         */
+
+                        output.accept(HnSItemRegistry.ABYSSLATE.get());
+                        output.accept(HnSItemRegistry.PHANTASMIUM.get());
+                        output.accept(HnSItemRegistry.COBBLED_VOIDSTONE.get());
+                        output.accept(HnSItemRegistry.VOIDSTONE.get());
+
+                        /*
+                        *** Work Stations
+                         */
+                        output.accept(HnSItemRegistry.STARFORGE.get());
+
+                        /*
+                        *** Statues
+                         */
+                        output.accept(HnSItemRegistry.HAZEL_STATUE.get());
+                        output.accept(HnSItemRegistry.HAZEL_STATUE_POSE_1.get());
+                        output.accept(HnSItemRegistry.HAZEL_STATUE_POSE_2.get());
+                        output.accept(HnSItemRegistry.HAZEL_STATUE_POSE_3.get());
+
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> HAZEN_N_STUFF_EQUIPMENT = CREATIVE_MODE_TAB.register("hazennstuff_equipment",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(HnSItemRegistry.MASKED_FOOL_HELMET.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(HazenNStuff.MOD_ID, "hazennstuff_materials"))
+                    .title(Component.translatable("creativetab.hazennstuff.hazennstuff_equipment"))
+                    .displayItems((itemDisplayParameters, output) -> {
+
+                        /*
+                        *** Fire
+                         */
+
+                        // Blazeborne
+                        output.accept(HnSItemRegistry.BLAZEBORNE_HELMET.get());
+                        output.accept(HnSItemRegistry.BLAZEBORNE_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.BLAZEBORNE_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.BLAZEBORNE_BOOTS.get());
+
+                        // Hazel
+                        output.accept(HnSItemRegistry.HAZEL_HELMET.get());
+                        output.accept(HnSItemRegistry.HAZEL_CHESTPLATE.get());
+                        //output.accept(HnSItemRegistry.HAZEL_HOLY_MOLLY_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.HAZEL_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.HAZEL_BOOTS.get());
+
+                        /*
+                        *** Ice
+                         */
+
+                        // Cryogenic Ruler
+                        output.accept(HnSItemRegistry.CRYOGENIC_RULER_HELMET.get());
+                        output.accept(HnSItemRegistry.CRYOGENIC_RULER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.CRYOGENIC_RULER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.CRYOGENIC_RULER_BOOTS.get());
+
+                        // Crystal Arachnid
+                        output.accept(HnSItemRegistry.CRYSTAL_ARACHNID_HELMET.get());
+                        output.accept(HnSItemRegistry.CRYSTAL_ARACHNID_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.CRYSTAL_ARACHNID_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.CRYSTAL_ARACHNID_BOOTS.get());
+
+                        /*
+                        *** Lightning
+                         */
+
+                        output.accept(HnSItemRegistry.CHARGED_SCOURGE_HELMET.get());
+                        output.accept(HnSItemRegistry.CHARGED_SCOURGE_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.CHARGED_SCOURGE_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.CHARGED_SCOURGE_BOOTS.get());
+
+                        output.accept(HnSItemRegistry.THUNDER_PROWLER_HELMET.get());
+                        output.accept(HnSItemRegistry.THUNDER_PROWLER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.THUNDER_PROWLER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.THUNDER_PROWLER_BOOTS.get());
+
+                        // Coruscated Valor
+                        output.accept(HnSItemRegistry.CORUSCATED_VALOR_HELMET.get());
+                        output.accept(HnSItemRegistry.CORUSCATED_VALOR_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.CORUSCATED_VALOR_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.CORUSCATED_VALOR_BOOTS.get());
+
+                        /*
+                        *** Nature
+                         */
+
+                        // Creaking
+                        output.accept(HnSItemRegistry.CREAKING_HELMET.get());
+                        output.accept(HnSItemRegistry.CREAKING_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.CREAKING_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.CREAKING_BOOTS.get());
+
+                        // Ancient Druid
+                        output.accept(HnSItemRegistry.ANCIENT_DRUID_HELMET.get());
+                        output.accept(HnSItemRegistry.ANCIENT_DRUID_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.ANCIENT_DRUID_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.ANCIENT_DRUID_BOOTS.get());
+
+                        /*
+                        *** Blood
+                         */
+
+                        // Flesh Mass
+                        output.accept(HnSItemRegistry.FLESH_MASS_HELMET.get());
+                        output.accept(HnSItemRegistry.FLESH_MASS_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.FLESH_MASS_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.FLESH_MASS_BOOTS.get());
+
+                        // The Wither
+                        output.accept(HnSItemRegistry.THE_WITHER_HELMET.get());
+                        output.accept(HnSItemRegistry.THE_WITHER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.THE_WITHER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.THE_WITHER_BOOTS.get());
+
+
+                        // Tyros
+                        output.accept(HnSItemRegistry.DEAD_KING_HELMET.get());
+                        output.accept(HnSItemRegistry.DEAD_KING_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.DEAD_KING_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.DEAD_KING_BOOTS.get());
+
+                        /*
+                        *** Ender
+                         */
+
+                        // Ender Dragon
+                        output.accept(HnSItemRegistry.ENDER_DRAGON_HELMET.get());
+                        output.accept(HnSItemRegistry.ENDER_DRAGON_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.ENDER_DRAGON_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.ENDER_DRAGON_BOOTS.get());
+
+                        /*
+                        *** Holy
+                         */
+
+                        // Seraph
+                        output.accept(HnSItemRegistry.SERAPH_HELMET.get());
+                        output.accept(HnSItemRegistry.SERAPH_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.SERAPH_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.SERAPH_BOOTS.get());
+
+                        // Mothic Witch
+                        output.accept(HnSItemRegistry.MOTHIC_WITCH_HELMET.get());
+                        output.accept(HnSItemRegistry.MOTHIC_WITCH_CHESTPLATE.get());
+                        //output.accept(HnSItemRegistry.MOTHIC_WITCH_SECRET_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.MOTHIC_WITCH_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.MOTHIC_WITCH_BOOTS.get());
+
+                        // Gabriel Ultrakill
+                        output.accept(HnSItemRegistry.GABRIEL_ULTRAKILL_HELMET.get());
+                        output.accept(HnSItemRegistry.GABRIEL_ULTRAKILL_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.GABRIEL_ULTRAKILL_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.GABRIEL_ULTRAKILL_BOOTS.get());
+
+                        /*
+                        *** Evocation
+                         */
+
+                        // Supreme Witch
+                        output.accept(HnSItemRegistry.SUPREME_WITCH_HELMET.get());
+                        output.accept(HnSItemRegistry.SUPREME_WITCH_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.SUPREME_WITCH_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.SUPREME_WITCH_BOOTS.get());
+
+                        // Alchemist Supreme
+                        output.accept(HnSItemRegistry.ALCHEMIST_SUPREME_HELMET.get());
+                        output.accept(HnSItemRegistry.ALCHEMIST_SUPREME_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.ALCHEMIST_SUPREME_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.ALCHEMIST_SUPREME_BOOTS.get());
+
+                        /*
+                        *** Radiance
+                         */
+
+                        // Radiant Crystal
+                        output.accept(HnSItemRegistry.RADIANT_CRYSTAL_HELMET.get());
+                        output.accept(HnSItemRegistry.RADIANT_CRYSTAL_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.RADIANT_CRYSTAL_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.RADIANT_CRYSTAL_BOOTS.get());
+
+                        // Glassweaver
+                        output.accept(HnSItemRegistry.GLASSWEAVER_HELMET.get());
+                        output.accept(HnSItemRegistry.GLASSWEAVER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.GLASSWEAVER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.GLASSWEAVER_BOOTS.get());
+
+
+
+                        /*
+                         *** Shadow
+                         */
+
+                        // Masked Fool
+                        output.accept(HnSItemRegistry.MASKED_FOOL_HELMET.get());
+                        output.accept(HnSItemRegistry.MASKED_FOOL_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.MASKED_FOOL_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.MASKED_FOOL_BOOTS.get());
+
+                        // Shadow Jester
+                        output.accept(HnSItemRegistry.SHADOW_JESTER_HELMET.get());
+                        output.accept(HnSItemRegistry.SHADOW_JESTER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.SHADOW_JESTER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.SHADOW_JESTER_BOOTS.get());
+
+
+                        /*
+                         *** Cosmic
+                         */
+
+
+                        // Cosmic Scholar
+                        output.accept(HnSItemRegistry.COSMIC_SCHOLAR_HELMET.get());
+                        output.accept(HnSItemRegistry.COSMIC_SCHOLAR_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.COSMIC_SCHOLAR_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.COSMIC_SCHOLAR_BOOTS.get());
+
+                        // Astraconic Weaver
+                        output.accept(HnSItemRegistry.ASTRACONIC_WEAVER_HELMET.get());
+                        output.accept(HnSItemRegistry.ASTRACONIC_WEAVER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.ASTRACONIC_WEAVER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.ASTRACONIC_WEAVER_BOOTS.get());
+
+
+                        /*
+                         *** Hydro
+                         */
+
+
+                        // Nautilus Knight
+                        output.accept(HnSItemRegistry.NAUTILUS_KNIGHT_HELMET.get());
+                        output.accept(HnSItemRegistry.NAUTILUS_KNIGHT_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.NAUTILUS_KNIGHT_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.NAUTILUS_KNIGHT_BOOTS.get());
+
+                        // Elder Guardian
+                        output.accept(HnSItemRegistry.ELDER_GUARDIAN_HELMET.get());
+                        output.accept(HnSItemRegistry.ELDER_GUARDIAN_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.ELDER_GUARDIAN_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.ELDER_GUARDIAN_BOOTS.get());
+
+                        /*
+                         *** Eldritch
+                         */
+
+                        // Dark Ritual Templar
+                        output.accept(HnSItemRegistry.DARK_RITUAL_TEMPLAR_HELMET.get());
+                        output.accept(HnSItemRegistry.DARK_RITUAL_TEMPLAR_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.DARK_RITUAL_TEMPLAR_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.DARK_RITUAL_TEMPLAR_BOOTS.get());
+
+                        // Infestation
+                        output.accept(HnSItemRegistry.INFESTATION_HELMET.get());
+                        output.accept(HnSItemRegistry.INFESTATION_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.INFESTATION_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.INFESTATION_BOOTS.get());
+
+                        /*
+                         *** Pyrium
+                         */
+
+
+                        // Pyrium
+                        output.accept(HnSItemRegistry.PYRIUM_HELMET.get());
+                        output.accept(HnSItemRegistry.PYRIUM_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.PYRIUM_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.PYRIUM_BOOTS.get());
+
+                        // Legionnaire
+                        output.accept(HnSItemRegistry.LEGACY_LEGIONNAIRE_HELMET.get());
+                        output.accept(HnSItemRegistry.LEGACY_LEGIONNAIRE_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.LEGACY_LEGIONNAIRE_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.LEGACY_LEGIONNAIRE_BOOTS.get());
+
+                        // Legionnaire Ruler
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_RULER_HELMET.get());
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_RULER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_RULER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_RULER_BOOTS.get());
+
+                        // Legionnaire Ruler Soul
+                        output.accept(HnSItemRegistry.SOUL_LEGIONNAIRE_RULER_HELMET.get());
+                        output.accept(HnSItemRegistry.SOUL_LEGIONNAIRE_RULER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.SOUL_LEGIONNAIRE_RULER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.SOUL_LEGIONNAIRE_RULER_BOOTS.get());
+
+                        // Legionnaire Commander
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_COMMANDER_HELMET.get());
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_COMMANDER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_COMMANDER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_COMMANDER_BOOTS.get());
+
+                        // Legionnaire Battlemage
+                        output.accept(HnSItemRegistry.PYRIUM_BATTLEMAGE_HELMET.get());
+                        output.accept(HnSItemRegistry.PYRIUM_BATTLEMAGE_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.PYRIUM_BATTLEMAGE_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.PYRIUM_BATTLEMAGE_BOOTS.get());
+
+                        // Tyros
+                        output.accept(HnSItemRegistry.TYROS_HELMET.get());
+                        output.accept(HnSItemRegistry.TYROS_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.TYROS_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.TYROS_BOOTS.get());
+
+
+                        /*
+                         *** Cosmetic Battlemage
+                         */
+
+
+                        /*
+                        *** Mining Armor Sets
+                         */
+
+                        // Miner
+                        output.accept(HnSItemRegistry.MINER_HELMET.get());
+                        output.accept(HnSItemRegistry.MINER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.MINER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.MINER_BOOTS.get());
+
+                        // Spectral Spelunker
+                        output.accept(HnSItemRegistry.SPECTRAL_SPELUNKER_HELMET.get());
+                        output.accept(HnSItemRegistry.SPECTRAL_SPELUNKER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.SPECTRAL_SPELUNKER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.SPECTRAL_SPELUNKER_BOOTS.get());
+
+
+
+                        /*
+                        *** Melee Armor Sets
+                         */
+
+
+
+                        // Frostbite Knight
+                        output.accept(HnSItemRegistry.FROSTBITE_KNIGHT_HELMET.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_KNIGHT_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_KNIGHT_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_KNIGHT_BOOTS.get());
+
+                        // Frostbite Knight
+                        output.accept(HnSItemRegistry.DREADSTEEL_KNIGHT_HELMET.get());
+                        output.accept(HnSItemRegistry.DREADSTEEL_KNIGHT_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.DREADSTEEL_KNIGHT_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.DREADSTEEL_KNIGHT_BOOTS.get());
+
+
+
+                        /*
+                         *** Archer Armor Sets
+                         */
+
+
+
+                        // Bounty Hunter
+                        output.accept(HnSItemRegistry.BOUNTY_HUNTER_HELMET.get());
+                        output.accept(HnSItemRegistry.BOUNTY_HUNTER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.BOUNTY_HUNTER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.BOUNTY_HUNTER_BOOTS.get());
+
+                        // Frostbite Hunter
+                        output.accept(HnSItemRegistry.FROSTBITE_HUNTER_HELMET.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_HUNTER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_HUNTER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.FROSTBITE_HUNTER_BOOTS.get());
+
+                        // Permafrost Prince
+                        output.accept(HnSItemRegistry.PERMAFROST_PRINCE_HELMET.get());
+                        output.accept(HnSItemRegistry.PERMAFROST_PRINCE_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.PERMAFROST_PRINCE_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.PERMAFROST_PRINCE_BOOTS.get());
+
+
+
+                        /*
+                        *** Misc
+                         */
+
+
+
+                        // Magehunter
+                        output.accept(HnSItemRegistry.MAGEHUNTER_HELMET.get());
+                        output.accept(HnSItemRegistry.MAGEHUNTER_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.MAGEHUNTER_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.MAGEHUNTER_BOOTS.get());
+
+                        // Mithril Battlemage
+                        output.accept(HnSItemRegistry.MITHRIL_BATTLEMAGE_HELMET.get());
+                        output.accept(HnSItemRegistry.MITHRIL_BATTLEMAGE_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.MITHRIL_BATTLEMAGE_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.MITHRIL_BATTLEMAGE_BOOTS.get());
+
+
+                        /*
+                         *** Tribute Armor Sets
+                         */
+
+
+                        // Fireblossom
+
+
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_BATTLEMAGE_HELMET.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_BATTLEMAGE_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_BATTLEMAGE_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_BATTLEMAGE_BOOTS.get());
+
+
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_KNIGHT_HELMET.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_KNIGHT_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_KNIGHT_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_KNIGHT_BOOTS.get());
+
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_GOWN_HELMET.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_GOWN_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_GOWN_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_GOWN_BOOTS.get());
+
+                        output.accept(HnSItemRegistry.LEGACY_FIREBLOSSOM_BATTLEMAGE_CROWN.get());
+                        output.accept(HnSItemRegistry.LEGACY_FIREBLOSSOM_BATTLEMAGE_HELMET.get());
+                        output.accept(HnSItemRegistry.LEGACY_FIREBLOSSOM_BATTLEMAGE_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.LEGACY_FIREBLOSSOM_BATTLEMAGE_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.LEGACY_FIREBLOSSOM_BATTLEMAGE_BOOTS.get());
+
+                        // Arbitrium Robes
+                        output.accept(HnSItemRegistry.ARBITRIUM_ROBES_HELMET.get());
+                        output.accept(HnSItemRegistry.ARBITRIUM_ROBES_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.ARBITRIUM_ROBES_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.ARBITRIUM_ROBES_BOOTS.get());
+
+                        // Atlas
+                        output.accept(HnSItemRegistry.ATLAS_HELMET.get());
+                        output.accept(HnSItemRegistry.ATLAS_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.ATLAS_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.ATLAS_BOOTS.get());
+
+                        // Maverick
+                        output.accept(HnSItemRegistry.MAVERICK_HELMET.get());
+                        output.accept(HnSItemRegistry.MAVERICK_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.MAVERICK_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.MAVERICK_BOOTS.get());
+
+                        // SLC!Cat
+                        output.accept(HnSItemRegistry.SLC_CAT_HELMET.get());
+                        output.accept(HnSItemRegistry.SLC_CAT_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.SLC_CAT_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.SLC_CAT_BOOTS.get());
+
+                        // Abberant Predator
+                        output.accept(HnSItemRegistry.ABBERANT_PREDATOR_HELMET.get());
+                        output.accept(HnSItemRegistry.ABBERANT_PREDATOR_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.ABBERANT_PREDATOR_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.ABBERANT_PREDATOR_BOOTS.get());
+
+                        // Iron 431
+                        output.accept(HnSItemRegistry.IRON431_HELMET.get());
+                        output.accept(HnSItemRegistry.IRON431_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.IRON431_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.IRON431_BOOTS.get());
+
+                        // Sacred Robes
+                        output.accept(HnSItemRegistry.SACRED_ROBES_HELMET.get());
+                        output.accept(HnSItemRegistry.SACRED_ROBES_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.SACRED_ROBES_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.SACRED_ROBES_BOOTS.get());
+
+                        // Lemon God
+                        output.accept(HnSItemRegistry.LEMON_GOD_HELMET.get());
+                        output.accept(HnSItemRegistry.LEMON_GOD_CHESTPLATE.get());
+                        output.accept(HnSItemRegistry.LEMON_GOD_LEGGINGS.get());
+                        output.accept(HnSItemRegistry.LEMON_GOD_BOOTS.get());
+
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> HAZEN_N_STUFF_UTILITY = CREATIVE_MODE_TAB.register("hazennstuff_utility",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(HnSItemRegistry.RADIANCE.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(HazenNStuff.MOD_ID, "hazennstuff_equipment"))
+                    .title(Component.translatable("creativetab.hazennstuff.hazennstuff_utility"))
+                    .displayItems((itemDisplayParameters, output) -> {
+
+                        /*
+                        *** Weapons
+                         */
+
+
+                        //Fire
+
+
+                        //Fireblossom Rapier
+                        output.accept(HnSItemRegistry.FIREBLOSSOM_RAPIER.get());
+                        //Fire Brand
+                        output.accept(HnSItemRegistry.FIREBRAND.get());
+                        //Draconic Splitter
+                        output.accept(HnSItemRegistry.DRACONIC_SPLITTER.get());
+                        //Ravens Bane
+                        output.accept(HnSItemRegistry.RAVENS_BANE.get());
+
+
+                        //Ice
+
+
+                        //Ice Pike
+                        output.accept(HnSItemRegistry.ICE_PIKE.get());
+                        // Frostburn Dagger
+                        output.accept(HnSItemRegistry.FROSTBURN_DAGGER.get());
+
+
+                        //Lightning
+
+
+                        //Beongae
+                        output.accept(HnSItemRegistry.BEONGAE.get());
+                        //Skyscorcher
+                        output.accept(HnSItemRegistry.SKYSCORCHER.get());
+
+                        /*
+                        Ionic Splitter
+                         */
+                        output.accept(HnSItemRegistry.IONIC_SPLITTER_DORMANT.get());
+                        output.accept(HnSItemRegistry.IONIC_SPLITTER_T1.get());
+                        output.accept(HnSItemRegistry.IONIC_SPLITTER_T2.get());
+                        output.accept(HnSItemRegistry.IONIC_SPLITTER_T3.get());
+
+
+                        //Nature
+
+
+                        //Bountiful Harvest
+                        output.accept(HnSItemRegistry.BOUNTIFUL_HARVEST.get());
+
+                        /*
+                        *** O' Fortuna
+                         */
+                        output.accept(HnSItemRegistry.O_FORTUNA_DORMANT.get());
+
+
+                        //Blood
+
+                        /*
+                        *** Devastator
+                         */
+                        output.accept(HnSItemRegistry.DEVASTATOR_DORMANT.get());
+
+
+                        //Ender
+
+
+                        // Obsidian Claymore
+                        output.accept(HnSItemRegistry.OBSIDIAN_CLAYMORE.get());
+
+                        /*
+                        *** Umbranova
+                         */
+                        output.accept(HnSItemRegistry.UMBRANOVA_T1.get());
+
+
+                        //Holy
+
+
+                        // Hammer of Justice
+                        output.accept(HnSItemRegistry.HAMMER_OF_JUSTICE.get());
+                        // Excalibur
+                        output.accept(HnSItemRegistry.EXCALIBUR.get());
+                        // Hazen's Excalibur
+                        output.accept(HnSItemRegistry.EXCALIBUR.get());
+                        // Divine Greatsword
+                        output.accept(HnSItemRegistry.DIVINE_GREATSWORD.get());
+
+
+                        //Radiance
+
+                        //Spectrum
+                        output.accept(HnSItemRegistry.SPECTRUM.get());
+
+
+                        //Evocation
+
+
+                        //Ancient Warriors Axe
+                        output.accept(HnSItemRegistry.ANCIENT_WARRIORS_AXE.get());
+                        //Malice
+                        output.accept(HnSItemRegistry.MALICE.get());
+
+                        /*
+                        *** Provocation
+                         */
+                        output.accept(HnSItemRegistry.PROVOCATION_DORMANT.get());
+
+
+                        //Shadow
+
+
+                        // Soul Reaper
+                        output.accept(HnSItemRegistry.SOUL_REAPER.get());
+
+
+                        // Cosmic
+
+
+                        // Soul Reaper
+                        output.accept(HnSItemRegistry.ASTRALITE_CLEAVER.get());
+
+
+                        // Hydro
+
+                        // Soul Reaper
+                        output.accept(HnSItemRegistry.TIDAL_WAVE.get());
+
+
+                        //Eldritch
+
+
+                        //The Devourer
+                        output.accept(HnSItemRegistry.THE_DEVOURER.get());
+
+
+                        //Misc
+
+
+                        //Mage Bane
+                        output.accept(HnSItemRegistry.MAGE_BANE.get());
+
+                        //Legionnaire Warlock Axe
+                        output.accept(HnSItemRegistry.LEGIONNAIRE_WARLOCK_AXE.get());
+
+
+                        /*
+                        ***Staves
+                         */
+
+                        //Wisewood Cane
+                        output.accept(HnSItemRegistry.WISEWOOD_CANE.get());
+
+                        //Frieren Staff
+                        output.accept(HnSItemRegistry.FRIEREN_STAFF.get());
+
+                        //Rod of Discord
+                        output.accept(HnSItemRegistry.ROD_OF_DISCORD.get());
+
+                        //White Lily Staff
+                        output.accept(HnSItemRegistry.WHITE_LILY_STAFF.get());
+
+                        //Soulcalling Scepter
+                        output.accept(HnSItemRegistry.SOULCALLING_SCEPTER.get());
+
+                        //Enderconic Scepter
+                        output.accept(HnSItemRegistry.ENDERCONIC_SCEPTER.get());
+
+                        //Blossom of the Enchantress
+                        output.accept(HnSItemRegistry.BLOSSOM_OF_THE_ENCHANTRESS.get());
+
+                        //Grimoire Staff
+                        output.accept(HnSItemRegistry.GRIMOIRE_STAFF.get());
+
+                        //Divine Scepter
+                        output.accept(HnSItemRegistry.DIVINE_SCEPTER.get());
+
+                        // Ceaseless Void
+                        output.accept(HnSItemRegistry.CEASELESS_VOID.get());
+
+                        // Glassweaver Scepter
+                        output.accept(HnSItemRegistry.GLASSWEAVER_SCEPTER.get());
+
+                        // Nexus
+                        output.accept(HnSItemRegistry.NEXUS.get());
+
+                        // Coralite Cane
+                        output.accept(HnSItemRegistry.CORALITE_CANE.get());
+
+                        //Insania Aeternus
+                        output.accept(HnSItemRegistry.INSANIA_AETERNUS.get());
+
+
+                        /*
+                        *** Tools
+                         */
+
+                        //Pickaxes
+                        output.accept(HnSItemRegistry.SPECTRAL_PICKAXE.get());
+                        output.accept(HnSItemRegistry.PICKAXE_AXE.get());
+                        output.accept(HnSItemRegistry.PICKAXE_AXE_DIVINE_GOLD.get());
+
+                        /*
+                        ***Curios
+                         */
+
+                        //Mana Crystals
+                        output.accept(HnSItemRegistry.RUPTURED.get());
+                        output.accept(HnSItemRegistry.REFINED.get());
+                        output.accept(HnSItemRegistry.REINFORCED.get());
+                        output.accept(HnSItemRegistry.RADIANCE.get());
+
+                        //Life Crystals
+                        output.accept(HnSItemRegistry.SHATTERED.get());
+                        output.accept(HnSItemRegistry.SACRED.get());
+                        output.accept(HnSItemRegistry.STRENGTHENED.get());
+                        output.accept(HnSItemRegistry.SINGULARITY.get());
+
+                        //Soul Crystals
+                        output.accept(HnSItemRegistry.ABSTRACT.get());
+                        output.accept(HnSItemRegistry.ADVANCED.get());
+                        output.accept(HnSItemRegistry.ABOMINATION.get());
+                        output.accept(HnSItemRegistry.ABSOLUTE.get());
+
+                        //Spellbooks
+                        output.accept(HnSItemRegistry.GOLDEN_SHOWER_SPELLBOOK.get());
+                        output.accept(HnSItemRegistry.ENERGIZED_CORE_SPELLBOOK.get());
+
+                        //Sheath
+                        output.accept(HnSItemRegistry.GALVANIZED_SHEATH.get());
+                        output.accept(HnSItemRegistry.SCROLL_SHEATH.get());
+
+                        //Wings
+                        output.accept(HnSItemRegistry.ARBITRIUM_WINGS.get());
+                        output.accept(HnSItemRegistry.ANGEL_WINGS.get());
+                        output.accept(HnSItemRegistry.FALLEN_ANGEL_WINGS.get());
+
+                        // Cinderous Curios
+                        output.accept(HnSItemRegistry.BLADE_OF_THE_LEGATE.get());
+                        output.accept(HnSItemRegistry.THE_PREFECTS_RING.get());
+                        output.accept(HnSItemRegistry.THE_TRIBUNES_MEDALLION.get());
+
+                        //Misc
+                        output.accept(HnSItemRegistry.RING_OF_EFFICIENCY.get());
+                        output.accept(HnSItemRegistry.PENDANT_OF_HARMONY.get());
+
+
+
+
+                    }).build());
+
+
+
+    public static void register(IEventBus eventBus) {
+        CREATIVE_MODE_TAB.register(eventBus);
+    }
+
+}
